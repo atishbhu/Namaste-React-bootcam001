@@ -9,5 +9,5 @@
 
 ### JSX is compiled into JavaScript:-
 
-- The JSX elements you write are actually compiled down to JavaScript by a tool called Babel. Babel is a compiler that transforms code into valid ES5 JavaScript that all browsers can understand and Babel is a bundler.
+- The JSX elements you write are actually compiled down to JavaScript by a tool called Babel. Babel is a compiler that transforms code into valid ES5 JavaScript that all browsers can understand.
 - Each JSX element becomes a function call, where its arguments are its attributes (“props”) and its contents (“children”).
