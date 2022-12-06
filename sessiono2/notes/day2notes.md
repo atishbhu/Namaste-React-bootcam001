@@ -1,90 +1,65 @@
-# Session:04
+# Day 05:
 
-### Pure Function:
+### JavaScript Objects VS JSON
 
-A pure function has no side effects to anything outside of it and given the same input
-will always output the same value. They do not change any data passed into them, but
-create new data to return without altering the original. However, it is not possible to
-have 100% pure func ons. At some point you need to interact with the dom or fetch an
-api. Even console.log makes a func on unpure because it uses the window object
-outside of the func on. Fact is a program cannot exist without side e ects. So, the goal
-of func onal programming is to minimize side effects by isolating them away from the
-data.
+Though the syntax of JSON is similar to the JavaScript object, JSON is different from JavaScript objects.
 
-Let's take a look at some examples:
+| JSON | JavaScript Object              |
+| :--------| :------------------------- |
+| The key in key/value pair should be in double quotes. | The key in key/value pair can be without double quotes. |
+| JSON cannot contain functions. | JavaScript objects can contain functions.|
+| JSON can be created and used by other programming languages.| JavaScript objects can only be used in JavaScript.|
 
 
-## Examples
+### Use of JSON
+JSON is the most commonly used format for transmitting data (data interchange) from a server to a client and vice-versa. JSON data are very easy to parse and use. It is fast to access and manipulate JSON data as they only contain texts.
+JSON is language independent. You can create and use JSON in other programming languages too.
 
-- Pure functions must not change any variable outside their scope
-```javascript
-let obj = { a: 0 }
-const impure = (input) => {
-// Modifies input.a
-input.a = input.a + 1;
-return input.a;
-}
-let b = impure(obj)
-console.log(obj) // Logs { "a": 1 }
-console.log(b) // Logs 1
-```
-The function changed the obj.a value that is outside its scope.
+### Default export vs named export 
 
-```javascript
-const sum = (a,b) => {
-    return a+b;
-}
+| Default export | named export             |
+| :--------| :------------------------- |
+| when you are exporting Default then while importing no need to use curly braces | In named export while importing you need to use curly braces.|
+| while importing you can any name| While importing you exactly give same as in export|
+| ***Syntax:*** `export Default Component`| ***Syntax*** `export Component`|
 
-console.log(sum(2,3));
-```
+### HigherOrder Component:
 
-above function is pure function because does not rely on outside variable and always return the same output when same input is passed.
+Higher Order Components ("HOC" in short) is a react application design pattern that is used to enhance
+components with reusable code. They enable to add functionality and behaviors to existing component.
+A HOC is a pure javascript function that accepts a component as it's argument and returns a new component with
+the extended functionality.
 
-Build lots of very small, reusable and predictable pure functions that do the following:
+`const EnhanceComponent = HigherOrderComponent(OriginalComponent)`
 
-- Complete 1 task per func on.
-- Do not mutate state.
-- Do not share state.
-- Be predictable.
-- Be composable, one input and one output.
-- Be pure if possible.
-- Return something.
+### advantage of using <form>:
 
-### Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent()):-
+Using `<form>` tag gives you automatic behaviors, like form submission when pressing Enter when an input has focus.
 
-- When we call it as a component <HeaderComponent /> a new element is created with React.createElement().
-- HeaderComponent() is a direct function invocation.
-- They both do the same thing but a component function returning JSX should use <HeaderComponent /> and not HeaderComponent().
-- When a functional component is used as <HeaderComponent /> it will have a lifecycle and can have a state.
-- When a function is called directly as HeaderComponent() it will just run and (probably) return something. No lifecycle, no hooks, and none of the React magic. It's very similar to assigning some JSX to a variable, but with more flexibility
+### what is includes()
 
-### what is React.Fragment:-
+includes() is a method that can return true if that strings contains particular string otherwise return false. includes() are case sensitive that means LowerCase and UpperCase are treated as different.
 
-As we know that React component render only single element if we have multiple element then we have to wrap in 
-div element but problem is that this will provide an extra node to it. React provide
-a solution for that React.Fragment. We can wrap whole element in React.Fragment 
-and React.Fragment does not provide extra node.
+### What is e.preventDefault()
 
-### use of default export in react:-
+The `event.preventDefault()` method stops the default action of an element from happening.
+For example, this can be useful when:
 
-- Every module has at most one default export if you export default a module then no need to use curly brace while importing.
+- Clicking on a "Submit" button, prevent it from submitting a form
+- Clicking on a link, prevent the link from following the URL
 
-### what is config-driven UI:-
+### what is state
 
-In normal apps, data is driven from backend and client decides how to render it. In Config/Server driven UI, the server decides what to render and how to render. Hence we can change the design of the app without updating the client.
+State in React components is essential to manage and communicate data in your application. It is represented as a
+JavaScript object and has component level scope, it can be thought of as the private data of your component.
 
-### advantage of config-driven UI:-
+### Pure Component 
 
-- No need to build and deploy it removes the dependency of deployment.
-- For any changes, we just need to update the data in DB. So our code will be a smart code that will handle many changes in less time and efforts.
+Pure Components in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
-### what if we have given same id in data array of object ?:-
+#### Features of React Pure Components
 
-Generally id's are used to uniquely determine an entity. Hence, if the same ids are used in an array of data objects, there would not be any identity mark for the individual objects in the array and hence we would not be able to identify them uniquely. 
-   In React, while looping through array of objects using map method, if we set id as key and also assign the same value to all the id's we are often encountered with this error "Encountered two children with the same key" which means react is unable to identify each element uniquely. Hence ids should not be kept equal.
-
-
-### Index is not a good way to be passed as key. Why?:-
-- When we use a map to loop over data such as an array of objects, we need to assign a key for each individual object which helps in identifying the object uniquely. Generally setting the index as key is not a good practice because whenever our data changes i.e we add/remove more elements in our array, the index value changes accordingly. Hence the index value of any element can differ once the array is altered. Therefore, setting index as key is not a good practice to follow.
-
-
+- Prevents re-rendering of Component if props or state is the same
+- Takes care of “shouldComponentUpdate” implicitly
+- State and Props are Shallow Compared
+- Pure Components are more performant in certain cases

@@ -1,11 +1,11 @@
-import CardComponent from "./CardComponent"
+import CardBody from "./CardComponent"
 import HeaderComponent from "./HeaderComponent"
 
 const AppLayout = () => {
     return (
         <>
             <HeaderComponent />
-            <CardComponent />
+            <CardBody />
         </>
     )
 }
