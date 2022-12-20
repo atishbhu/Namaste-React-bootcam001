@@ -1,7 +1,7 @@
 import CardBodyComponent from "./CardBodyComponent";
 import "./Card.style.css";
 import SearchComponent from "./SearchComponent";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import {datas} from './data'
 
 const CardComponent = ({ filterData }) => {
