@@ -1,4 +1,3 @@
-import atish from "./atish.jpg";
 export const datas = [
   {
     id: 1,

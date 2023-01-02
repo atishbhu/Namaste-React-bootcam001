@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { datas } from "./data";
+import { useState , useEffect} from "react";
+import { datas } from "../utils/data";
+import './SearchComponent.style.css'
 
 const filteredData = (searchText) => {
   searchText = searchText.toLowerCase();
@@ -10,9 +11,25 @@ const filteredData = (searchText) => {
 
 const SearchComponent = ({ setFilterData }) => {
   const [searchText, setSearchText] = useState("");
+  const [user,setUser] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, [user]);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(
+        `https://api.github.com/users/${user}`
+      );
+      setUser(result.data);
+    } catch (e) {
+      <h1>Error Occuried</h1>;
+    }
+  };
 
   return (
-    <div>
+    <div className="search-container">
       <form
         onSubmit={(e) => {
           e.preventDefault();
