@@ -1,0 +1,21 @@
+.card-body {
+    width: 300px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    margin-top: 20px;
+    margin: 5px;
+    box-sizing: border-box;
+
+}
+
+.card-body>img {
+    border-radius: 80px;
+}
+
+.card-container {
+    display:flex;
+    margin-left: 10px;
+    padding: 30px;
+    flex-wrap: wrap;
+}

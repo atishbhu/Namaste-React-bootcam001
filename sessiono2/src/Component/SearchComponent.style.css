@@ -1,0 +1,15 @@
+.search-container>form {
+    margin-left: 600px;
+}
+
+.search-container>form>input {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.search-container>form>button {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
